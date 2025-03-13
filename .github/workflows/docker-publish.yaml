@@ -63,10 +63,10 @@ jobs:
       needs: [ci_pipeline]
  
       steps:
-      
+
   
       - name: Debug Secrets
-        run: echo "DOCKER_USER is ${{ secrets.DOCKER_USER }}"
+        run: echo "DOCKER_USER is $secrets.DOCKER_USER"
       
       
       - uses: actions/checkout@v2 
