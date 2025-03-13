@@ -87,4 +87,4 @@ jobs:
         run: docker build . --file Dockerfile --tag $DOCKER_USER/$REPO_NAME:${{ steps.date.outputs.date }}
 
       - name: Docker Push
-        run: sudo docker push $DOCKER_USER/$REPO_NAME:${{ steps.date.outputs.date }}
+        run: docker push $DOCKER_USER/$REPO_NAME:${{ steps.date.outputs.date }}
