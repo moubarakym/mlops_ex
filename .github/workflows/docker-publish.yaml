@@ -63,6 +63,8 @@ jobs:
       needs: [ci_pipeline]
  
       steps:
+      - name: Debug Secrets
+        run: echo "Docker Username ${{ secrets.DOCKER_USER }}"
 
       - uses: actions/checkout@v2 
       - name: Log in to Docker Hub
