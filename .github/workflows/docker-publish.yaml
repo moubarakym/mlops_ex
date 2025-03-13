@@ -1,12 +1,10 @@
 name: Github-Docker Hub MLOps pipeline - Moubarak
 
 
-
 env:
   DOCKER_USER: ${{secrets.DOCKER_USER}}
   DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
   REPO_NAME: ${{secrets.REPO_NAME}}
-
 
 # Event Triggers:
 # The pipeline is triggered whenever there is a push to the main branch.
@@ -70,16 +68,11 @@ jobs:
       needs: [ci_pipeline]
  
       steps:
-      
-  
-      - name: Debug Secrets
-        run: echo "DOCKER_USER is $DOCKER_USER "
-      
-      
-      - uses: actions/checkout@v2 
-      - name: Log in to Docker Hub
-        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USER }}" --password-stdin
 
+      - uses: actions/checkout@v2 
+      - name: docker login
+        run: | # log into docker hub account
+          docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
   
       - name: Get current date # get the date of the build
         id: date
